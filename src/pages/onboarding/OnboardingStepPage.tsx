@@ -27,10 +27,15 @@ export function OnboardingStepPage() {
   const isReviewStep = stepId === 'review';
   const isLastFormStep = stepOrder[currentIndex + 1] === 'review';
 
-  /* Seed defaults when config loads */
+  /* Seed defaults (incl. defaultSelected for dataSource fields) when config loads */
   useEffect(() => {
     if (!config || config.sections.length === 0) return;
     const defaults = getStepDefaults(config.sections);
+    config.sections.flatMap((s) => s.fields).forEach((f) => {
+      if (f.defaultSelected !== undefined && !(f.name in formData)) {
+        defaults[f.name] = f.defaultSelected;
+      }
+    });
     Object.entries(defaults).forEach(([key, val]) => {
       if (!(key in formData)) setFieldValue(key, val);
     });

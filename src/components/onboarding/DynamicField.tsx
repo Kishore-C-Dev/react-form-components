@@ -4,6 +4,7 @@ import { Select } from '@/components/form/Select';
 import { MultiSelect } from '@/components/form/MultiSelect';
 import { FieldWrapper } from '@/components/form/FieldWrapper';
 import { cn } from '@/utils/cn';
+import { useFieldOptions } from '@/hooks/useFieldOptions';
 import type { FieldConfig } from '@/types/onboarding';
 
 interface DynamicFieldProps {
@@ -17,6 +18,9 @@ export function DynamicField({ field, value, error, onChange }: DynamicFieldProp
   const required = field.validations?.required?.value === true;
   const strVal = (value as string) ?? '';
   const arrVal = (value as string[]) ?? [];
+
+  const { options, loading: optsLoading } = useFieldOptions(field.dataSource, field.options);
+  const resolvedOptions = options;
 
   switch (field.type) {
     case 'text':
@@ -46,10 +50,10 @@ export function DynamicField({ field, value, error, onChange }: DynamicFieldProp
           id={field.name}
           label={field.label}
           required={required}
-          options={field.options ?? []}
-          placeholder={field.placeholder ?? 'Select…'}
+          options={resolvedOptions}
+          placeholder={optsLoading ? 'Loading…' : (field.placeholder ?? 'Select…')}
           error={error}
-          disabled={field.disabled}
+          disabled={field.disabled || optsLoading}
           value={strVal}
           onChange={(e) => onChange(field.name, e.target.value)}
         />
@@ -60,13 +64,13 @@ export function DynamicField({ field, value, error, onChange }: DynamicFieldProp
         <MultiSelect
           label={field.label}
           required={required}
-          options={field.options ?? []}
+          options={resolvedOptions}
           value={arrVal}
           onChange={(vals) => onChange(field.name, vals)}
-          placeholder={field.placeholder ?? 'Select…'}
+          placeholder={optsLoading ? 'Loading…' : (field.placeholder ?? 'Select…')}
           searchable
           error={error}
-          disabled={field.disabled}
+          disabled={field.disabled || optsLoading}
           hint={field.hint}
         />
       );
@@ -91,7 +95,7 @@ export function DynamicField({ field, value, error, onChange }: DynamicFieldProp
       return (
         <FieldWrapper label={field.label} error={error} required={required}>
           <div className="flex flex-wrap gap-3 pt-1">
-            {field.options?.map((opt) => (
+            {resolvedOptions.map((opt) => (
               <label
                 key={opt.value}
                 className={cn(
