@@ -1,0 +1,331 @@
+{
+  "stepId": "kyc",
+  "title": "KYC Assessment",
+  "sections": [
+    {
+      "title": "Document Collection & Verification",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "docIncorporationStatus",
+          "label": "Certificate of Incorporation",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docMemoaStatus",
+          "label": "Memorandum & Articles of Association",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docBoardResolutionStatus",
+          "label": "Board Resolution / Authorization Letter",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docFinancialStatementsStatus",
+          "label": "Latest Audited Financial Statements",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docOwnershipChartStatus",
+          "label": "Ownership Structure Chart",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docSignatoryIdStatus",
+          "label": "Signatory ID Documents",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docUboIdStatus",
+          "label": "UBO ID Documents",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        },
+        {
+          "name": "docProofOfAddressStatus",
+          "label": "Proof of Registered Address",
+          "type": "select",
+          "placeholder": "Select status",
+          "options": [
+            { "label": "Received & Verified", "value": "verified" },
+            { "label": "Received – Pending Verification", "value": "pending_verification" },
+            { "label": "Requested – Awaiting Receipt", "value": "awaiting" },
+            { "label": "Not Applicable", "value": "na" }
+          ],
+          "validations": { "required": { "value": true, "message": "Document status is required" } }
+        }
+      ]
+    },
+    {
+      "title": "AML / CFT Screening Results",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "amlScreeningStatus",
+          "label": "AML Screening Status",
+          "type": "select",
+          "placeholder": "Select result",
+          "options": [
+            { "label": "Clear – No Matches Found", "value": "clear" },
+            { "label": "Potential Match – Requires Review", "value": "potential_match" },
+            { "label": "Confirmed Match – Escalated to Compliance", "value": "escalated" },
+            { "label": "Screening Pending", "value": "pending" }
+          ],
+          "validations": { "required": { "value": true, "message": "AML screening status is required" } }
+        },
+        {
+          "name": "sanctionsScreeningStatus",
+          "label": "Sanctions Screening Status",
+          "type": "select",
+          "placeholder": "Select result",
+          "options": [
+            { "label": "Clear – No Matches Found", "value": "clear" },
+            { "label": "Potential Match – Requires Review", "value": "potential_match" },
+            { "label": "Confirmed Match – Account Opening Declined", "value": "declined" },
+            { "label": "Screening Pending", "value": "pending" }
+          ],
+          "validations": { "required": { "value": true, "message": "Sanctions screening status is required" } }
+        },
+        {
+          "name": "ofacCheckStatus",
+          "label": "OFAC Screening Status",
+          "type": "select",
+          "placeholder": "Select result",
+          "options": [
+            { "label": "Clear", "value": "clear" },
+            { "label": "Potential Match – Under Review", "value": "review" },
+            { "label": "Confirmed Match – Blocked", "value": "blocked" },
+            { "label": "Pending", "value": "pending" }
+          ],
+          "validations": { "required": { "value": true, "message": "OFAC check status is required" } }
+        },
+        {
+          "name": "euSanctionsStatus",
+          "label": "EU Consolidated Sanctions List",
+          "type": "select",
+          "placeholder": "Select result",
+          "options": [
+            { "label": "Clear", "value": "clear" },
+            { "label": "Match Found – Under Review", "value": "review" },
+            { "label": "Confirmed – Declined", "value": "declined" },
+            { "label": "Pending", "value": "pending" }
+          ],
+          "validations": { "required": { "value": true, "message": "EU sanctions status is required" } }
+        },
+        {
+          "name": "adverseMediaCheck",
+          "label": "Adverse Media / Negative News Check",
+          "type": "select",
+          "placeholder": "Select result",
+          "options": [
+            { "label": "Clear – No Adverse Media", "value": "clear" },
+            { "label": "Minor Issues – Noted in File", "value": "minor" },
+            { "label": "Significant Issues – Escalated", "value": "escalated" },
+            { "label": "Pending", "value": "pending" }
+          ],
+          "validations": { "required": { "value": true, "message": "Adverse media check result is required" } }
+        },
+        {
+          "name": "screeningNotes",
+          "label": "Screening Notes / Remarks",
+          "type": "textarea",
+          "placeholder": "Document any false positives, escalations, or relevant screening observations"
+        }
+      ]
+    },
+    {
+      "title": "Risk Assessment & Classification",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "customerRiskRating",
+          "label": "Overall Customer Risk Rating",
+          "type": "radio",
+          "options": [
+            { "label": "Low Risk", "value": "low" },
+            { "label": "Medium Risk", "value": "medium" },
+            { "label": "High Risk", "value": "high" }
+          ],
+          "validations": { "required": { "value": true, "message": "Customer risk rating is required" } }
+        },
+        {
+          "name": "cddLevel",
+          "label": "CDD Level Required",
+          "type": "select",
+          "placeholder": "Select CDD level",
+          "options": [
+            { "label": "Simplified CDD (SDD)", "value": "simplified" },
+            { "label": "Standard CDD", "value": "standard" },
+            { "label": "Enhanced Due Diligence (EDD)", "value": "enhanced" }
+          ],
+          "validations": { "required": { "value": true, "message": "CDD level is required" } }
+        },
+        {
+          "name": "eddRequired",
+          "label": "Enhanced Due Diligence (EDD) Required?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "EDD requirement declaration is required" } }
+        },
+        {
+          "name": "fatfCountryRisk",
+          "label": "FATF Country Risk Level",
+          "type": "select",
+          "placeholder": "Select FATF risk level",
+          "options": [
+            { "label": "Low – Standard FATF Member", "value": "low" },
+            { "label": "Medium – Non-FATF but Cooperative", "value": "medium" },
+            { "label": "High – FATF Grey List (Increased Monitoring)", "value": "high" },
+            { "label": "Very High – FATF Black List (High-Risk Jurisdiction)", "value": "very_high" }
+          ],
+          "validations": { "required": { "value": true, "message": "FATF country risk level is required" } }
+        },
+        {
+          "name": "industryRiskLevel",
+          "label": "Industry Risk Level",
+          "type": "select",
+          "placeholder": "Select industry risk",
+          "options": [
+            { "label": "Low", "value": "low" },
+            { "label": "Medium", "value": "medium" },
+            { "label": "High", "value": "high" },
+            { "label": "Very High", "value": "very_high" }
+          ],
+          "validations": { "required": { "value": true, "message": "Industry risk level is required" } }
+        },
+        {
+          "name": "eddJustification",
+          "label": "EDD Justification",
+          "type": "textarea",
+          "placeholder": "Provide detailed justification for requiring Enhanced Due Diligence",
+          "fullWidth": true,
+          "visibleWhen": { "field": "eddRequired", "equals": "yes" },
+          "validations": {
+            "required": { "value": true, "message": "EDD justification is required" },
+            "minLength": { "value": 30, "message": "Minimum 30 characters required" }
+          }
+        },
+        {
+          "name": "riskRatingJustification",
+          "label": "Risk Rating Justification",
+          "type": "textarea",
+          "placeholder": "Justify the overall risk rating based on business profile, geography, transaction patterns, and screening results",
+          "fullWidth": true,
+          "validations": {
+            "required": { "value": true, "message": "Risk rating justification is required" },
+            "minLength": { "value": 30, "message": "Minimum 30 characters required" }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Relationship Associate (RA) Declaration",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "raEmployeeId",
+          "label": "RA Employee ID",
+          "type": "text",
+          "placeholder": "e.g. EMP-001234",
+          "validations": { "required": { "value": true, "message": "RA employee ID is required" } }
+        },
+        {
+          "name": "raFullName",
+          "label": "RA Full Name",
+          "type": "text",
+          "placeholder": "Full name of Relationship Associate",
+          "validations": { "required": { "value": true, "message": "RA full name is required" } }
+        },
+        {
+          "name": "raTeamDepartment",
+          "label": "Team / Department",
+          "type": "text",
+          "placeholder": "e.g. Commercial Banking – EMEA",
+          "validations": { "required": { "value": true, "message": "Team / department is required" } }
+        },
+        {
+          "name": "dateOfAssessment",
+          "label": "Date of Assessment",
+          "type": "date",
+          "validations": { "required": { "value": true, "message": "Assessment date is required" } }
+        },
+        {
+          "name": "raCertification",
+          "label": "I certify that the information provided in this onboarding assessment is accurate and complete to the best of my knowledge, and that this assessment has been conducted in full compliance with the bank's AML, KYC, and CDD policies and applicable regulatory requirements.",
+          "type": "checkbox",
+          "fullWidth": true,
+          "validations": {
+            "required": { "value": true, "message": "Certification is mandatory to proceed with submission" }
+          }
+        }
+      ]
+    }
+  ],
+  "submitValidations": [
+    {
+      "type": "conditionalRequired",
+      "if": { "field": "eddRequired", "equals": "yes" },
+      "then": { "field": "eddJustification", "required": true },
+      "message": "EDD justification is required when EDD is selected"
+    }
+  ]
+}

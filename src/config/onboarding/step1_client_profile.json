@@ -1,0 +1,248 @@
+{
+  "stepId": "clientProfile",
+  "title": "Client Profile",
+  "sections": [
+    {
+      "title": "Legal Entity Information",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "legalEntityName",
+          "label": "Legal Entity Name",
+          "type": "text",
+          "placeholder": "Full registered legal name",
+          "validations": {
+            "required": { "value": true, "message": "Legal entity name is required" },
+            "minLength": { "value": 3, "message": "Minimum 3 characters" },
+            "maxLength": { "value": 150, "message": "Maximum 150 characters" }
+          }
+        },
+        {
+          "name": "entityType",
+          "label": "Entity Type",
+          "type": "select",
+          "placeholder": "Select entity type",
+          "options": [
+            { "label": "Corporation / Ltd", "value": "corporation" },
+            { "label": "Limited Liability Company (LLC)", "value": "llc" },
+            { "label": "Partnership", "value": "partnership" },
+            { "label": "Limited Partnership (LP)", "value": "lp" },
+            { "label": "Sole Proprietorship", "value": "sole_prop" },
+            { "label": "Non-Profit Organization", "value": "non_profit" },
+            { "label": "Government / State-Owned Entity", "value": "government" },
+            { "label": "Trust", "value": "trust" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "Entity type is required" }
+          }
+        },
+        {
+          "name": "countryOfIncorporation",
+          "label": "Country of Incorporation",
+          "type": "select",
+          "placeholder": "Select country",
+          "options": [
+            { "label": "United States", "value": "US" },
+            { "label": "United Kingdom", "value": "GB" },
+            { "label": "Germany", "value": "DE" },
+            { "label": "France", "value": "FR" },
+            { "label": "Switzerland", "value": "CH" },
+            { "label": "Netherlands", "value": "NL" },
+            { "label": "Singapore", "value": "SG" },
+            { "label": "Hong Kong", "value": "HK" },
+            { "label": "United Arab Emirates", "value": "AE" },
+            { "label": "Japan", "value": "JP" },
+            { "label": "India", "value": "IN" },
+            { "label": "China", "value": "CN" },
+            { "label": "Canada", "value": "CA" },
+            { "label": "Australia", "value": "AU" },
+            { "label": "Cayman Islands", "value": "KY" },
+            { "label": "British Virgin Islands", "value": "VG" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "Country of incorporation is required" }
+          }
+        },
+        {
+          "name": "dateOfIncorporation",
+          "label": "Date of Incorporation",
+          "type": "date",
+          "validations": {
+            "required": { "value": true, "message": "Date of incorporation is required" }
+          }
+        },
+        {
+          "name": "registrationNumber",
+          "label": "Company Registration Number",
+          "type": "text",
+          "placeholder": "e.g. 12345678",
+          "validations": {
+            "required": { "value": true, "message": "Registration number is required" }
+          }
+        },
+        {
+          "name": "taxId",
+          "label": "Tax ID / EIN",
+          "type": "text",
+          "placeholder": "e.g. 12-3456789",
+          "hint": "Tax identification number in country of incorporation"
+        },
+        {
+          "name": "lei",
+          "label": "LEI (Legal Entity Identifier)",
+          "type": "text",
+          "placeholder": "20-character alphanumeric code",
+          "hint": "Required for entities subject to MiFID II / EMIR reporting",
+          "validations": {
+            "pattern": { "value": "^[A-Z0-9]{20}$", "message": "LEI must be exactly 20 alphanumeric characters" }
+          }
+        },
+        {
+          "name": "industrySector",
+          "label": "Industry / Sector",
+          "type": "select",
+          "placeholder": "Select industry",
+          "options": [
+            { "label": "Manufacturing", "value": "manufacturing" },
+            { "label": "Real Estate & Construction", "value": "real_estate" },
+            { "label": "Financial Services", "value": "financial_services" },
+            { "label": "Technology & IT", "value": "technology" },
+            { "label": "Healthcare & Pharmaceuticals", "value": "healthcare" },
+            { "label": "Energy & Natural Resources", "value": "energy" },
+            { "label": "Trading & Import/Export", "value": "trading" },
+            { "label": "Retail & Consumer Goods", "value": "retail" },
+            { "label": "Professional Services", "value": "professional_services" },
+            { "label": "Transportation & Logistics", "value": "logistics" },
+            { "label": "Education", "value": "education" },
+            { "label": "Non-Government Organization", "value": "ngo" },
+            { "label": "Other", "value": "other" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "Industry sector is required" }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Registered Address",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "regAddressLine1",
+          "label": "Address Line 1",
+          "type": "text",
+          "placeholder": "Street address, P.O. Box",
+          "validations": { "required": { "value": true, "message": "Address is required" } }
+        },
+        {
+          "name": "regAddressLine2",
+          "label": "Address Line 2 (Optional)",
+          "type": "text",
+          "placeholder": "Suite, unit, floor"
+        },
+        {
+          "name": "regCity",
+          "label": "City",
+          "type": "text",
+          "placeholder": "City",
+          "validations": { "required": { "value": true, "message": "City is required" } }
+        },
+        {
+          "name": "regState",
+          "label": "State / Province",
+          "type": "text",
+          "placeholder": "State or Province"
+        },
+        {
+          "name": "regPostalCode",
+          "label": "Postal Code",
+          "type": "text",
+          "placeholder": "Postal / ZIP code"
+        },
+        {
+          "name": "regCountry",
+          "label": "Country",
+          "type": "select",
+          "placeholder": "Select country",
+          "options": [
+            { "label": "United States", "value": "US" },
+            { "label": "United Kingdom", "value": "GB" },
+            { "label": "Germany", "value": "DE" },
+            { "label": "France", "value": "FR" },
+            { "label": "Switzerland", "value": "CH" },
+            { "label": "Netherlands", "value": "NL" },
+            { "label": "Singapore", "value": "SG" },
+            { "label": "Hong Kong", "value": "HK" },
+            { "label": "United Arab Emirates", "value": "AE" },
+            { "label": "Japan", "value": "JP" },
+            { "label": "India", "value": "IN" },
+            { "label": "China", "value": "CN" },
+            { "label": "Canada", "value": "CA" },
+            { "label": "Australia", "value": "AU" },
+            { "label": "Cayman Islands", "value": "KY" },
+            { "label": "British Virgin Islands", "value": "VG" }
+          ],
+          "validations": { "required": { "value": true, "message": "Country is required" } }
+        }
+      ]
+    },
+    {
+      "title": "Primary Contact",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "contactName",
+          "label": "Contact Person Name",
+          "type": "text",
+          "placeholder": "Full name",
+          "validations": { "required": { "value": true, "message": "Contact name is required" } }
+        },
+        {
+          "name": "contactDesignation",
+          "label": "Title / Designation",
+          "type": "text",
+          "placeholder": "e.g. CFO, Treasurer, Director",
+          "validations": { "required": { "value": true, "message": "Designation is required" } }
+        },
+        {
+          "name": "contactEmail",
+          "label": "Email Address",
+          "type": "email",
+          "placeholder": "contact@company.com",
+          "validations": {
+            "required": { "value": true, "message": "Email is required" },
+            "pattern": { "value": "^[\\w.\\-]+@[\\w.\\-]+\\.[a-zA-Z]{2,}$", "message": "Invalid email address" }
+          }
+        },
+        {
+          "name": "contactPhone",
+          "label": "Phone Number",
+          "type": "tel",
+          "placeholder": "+1 (555) 123-4567",
+          "validations": { "required": { "value": true, "message": "Phone number is required" } }
+        },
+        {
+          "name": "website",
+          "label": "Company Website",
+          "type": "url",
+          "placeholder": "https://www.company.com"
+        },
+        {
+          "name": "annualRevenueUsd",
+          "label": "Annual Revenue (USD)",
+          "type": "select",
+          "placeholder": "Select range",
+          "options": [
+            { "label": "< $1 Million", "value": "lt_1m" },
+            { "label": "$1M – $10M", "value": "1m_10m" },
+            { "label": "$10M – $50M", "value": "10m_50m" },
+            { "label": "$50M – $250M", "value": "50m_250m" },
+            { "label": "$250M – $1 Billion", "value": "250m_1b" },
+            { "label": "> $1 Billion", "value": "gt_1b" }
+          ],
+          "validations": { "required": { "value": true, "message": "Annual revenue range is required" } }
+        }
+      ]
+    }
+  ]
+}

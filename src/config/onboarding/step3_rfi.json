@@ -1,0 +1,339 @@
+{
+  "stepId": "rfi",
+  "title": "Request for Information (RFI)",
+  "sections": [
+    {
+      "title": "Business Activities",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "primaryBusinessActivity",
+          "label": "Primary Business Activity Description",
+          "type": "textarea",
+          "placeholder": "Describe the main business operations, products and/or services offered",
+          "fullWidth": true,
+          "validations": {
+            "required": { "value": true, "message": "Business activity description is required" },
+            "minLength": { "value": 30, "message": "Please provide at least 30 characters" },
+            "maxLength": { "value": 1000, "message": "Maximum 1000 characters" }
+          }
+        },
+        {
+          "name": "businessActivityTypes",
+          "label": "Nature of Business Activities",
+          "type": "multiselect",
+          "placeholder": "Select all that apply",
+          "options": [
+            { "label": "Goods Manufacturing", "value": "manufacturing" },
+            { "label": "Wholesale / Retail Trading", "value": "trading" },
+            { "label": "Import / Export", "value": "import_export" },
+            { "label": "Financial Services & Investment", "value": "financial_services" },
+            { "label": "Real Estate Development", "value": "real_estate" },
+            { "label": "Consulting / Advisory", "value": "consulting" },
+            { "label": "Technology / Software", "value": "technology" },
+            { "label": "Construction & Engineering", "value": "construction" },
+            { "label": "Healthcare / Pharmaceuticals", "value": "healthcare" },
+            { "label": "Logistics & Transportation", "value": "logistics" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "At least one business activity type is required" },
+            "minItems": { "value": 1, "message": "Select at least one activity type" }
+          }
+        },
+        {
+          "name": "targetMarkets",
+          "label": "Target Markets / Regions",
+          "type": "multiselect",
+          "placeholder": "Select all applicable regions",
+          "options": [
+            { "label": "North America", "value": "north_america" },
+            { "label": "Western Europe", "value": "western_europe" },
+            { "label": "Eastern Europe", "value": "eastern_europe" },
+            { "label": "Middle East", "value": "middle_east" },
+            { "label": "Africa", "value": "africa" },
+            { "label": "South Asia", "value": "south_asia" },
+            { "label": "Southeast Asia", "value": "southeast_asia" },
+            { "label": "East Asia", "value": "east_asia" },
+            { "label": "Latin America", "value": "latin_america" },
+            { "label": "Oceania", "value": "oceania" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "Target markets are required" },
+            "minItems": { "value": 1, "message": "Select at least one target market" }
+          }
+        },
+        {
+          "name": "operatingCountriesCount",
+          "label": "Number of Countries of Operations",
+          "type": "select",
+          "placeholder": "Select range",
+          "options": [
+            { "label": "1 (Domestic only)", "value": "1" },
+            { "label": "2 – 5", "value": "2_5" },
+            { "label": "6 – 15", "value": "6_15" },
+            { "label": "16 – 30", "value": "16_30" },
+            { "label": "30+", "value": "30_plus" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Financial Profile",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "sourceOfFunds",
+          "label": "Source of Funds",
+          "type": "multiselect",
+          "placeholder": "Select all applicable sources",
+          "options": [
+            { "label": "Business / Trading Revenue", "value": "business_revenue" },
+            { "label": "Capital Investment / Equity", "value": "equity" },
+            { "label": "Loans / Bank Borrowings", "value": "loans" },
+            { "label": "Sale of Assets", "value": "asset_sale" },
+            { "label": "Dividends / Investment Returns", "value": "dividends" },
+            { "label": "Grants / Subsidies", "value": "grants" },
+            { "label": "Inter-company Transfers", "value": "intercompany" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "Source of funds is required" },
+            "minItems": { "value": 1, "message": "Select at least one source of funds" }
+          }
+        },
+        {
+          "name": "sourceOfWealth",
+          "label": "Primary Source of Wealth",
+          "type": "select",
+          "placeholder": "Select source of wealth",
+          "options": [
+            { "label": "Business Operations / Profits", "value": "business_profits" },
+            { "label": "Real Estate Transactions", "value": "real_estate" },
+            { "label": "Investment Returns", "value": "investments" },
+            { "label": "Inheritance", "value": "inheritance" },
+            { "label": "IPO / Private Equity Exit", "value": "ipo_exit" },
+            { "label": "Professional Compensation", "value": "salary" }
+          ],
+          "validations": { "required": { "value": true, "message": "Source of wealth is required" } }
+        },
+        {
+          "name": "expectedMonthlyInflow",
+          "label": "Expected Monthly Credit Volume (USD)",
+          "type": "select",
+          "placeholder": "Select range",
+          "options": [
+            { "label": "< $100,000", "value": "lt_100k" },
+            { "label": "$100K – $500K", "value": "100k_500k" },
+            { "label": "$500K – $1M", "value": "500k_1m" },
+            { "label": "$1M – $5M", "value": "1m_5m" },
+            { "label": "$5M – $10M", "value": "5m_10m" },
+            { "label": "> $10M", "value": "gt_10m" }
+          ],
+          "validations": { "required": { "value": true, "message": "Expected monthly inflow is required" } }
+        },
+        {
+          "name": "expectedMonthlyOutflow",
+          "label": "Expected Monthly Debit Volume (USD)",
+          "type": "select",
+          "placeholder": "Select range",
+          "options": [
+            { "label": "< $100,000", "value": "lt_100k" },
+            { "label": "$100K – $500K", "value": "100k_500k" },
+            { "label": "$500K – $1M", "value": "500k_1m" },
+            { "label": "$1M – $5M", "value": "1m_5m" },
+            { "label": "$5M – $10M", "value": "5m_10m" },
+            { "label": "> $10M", "value": "gt_10m" }
+          ],
+          "validations": { "required": { "value": true, "message": "Expected monthly outflow is required" } }
+        },
+        {
+          "name": "avgTransactionSize",
+          "label": "Average Transaction Size (USD)",
+          "type": "select",
+          "placeholder": "Select range",
+          "options": [
+            { "label": "< $10,000", "value": "lt_10k" },
+            { "label": "$10K – $50K", "value": "10k_50k" },
+            { "label": "$50K – $250K", "value": "50k_250k" },
+            { "label": "$250K – $1M", "value": "250k_1m" },
+            { "label": "> $1M", "value": "gt_1m" }
+          ]
+        },
+        {
+          "name": "monthlyTxCount",
+          "label": "Expected Monthly Transaction Count",
+          "type": "select",
+          "placeholder": "Select range",
+          "options": [
+            { "label": "< 10 transactions", "value": "lt_10" },
+            { "label": "10 – 50", "value": "10_50" },
+            { "label": "50 – 200", "value": "50_200" },
+            { "label": "200 – 1,000", "value": "200_1000" },
+            { "label": "> 1,000", "value": "gt_1000" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Transaction Patterns & Account Purpose",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "primaryCurrencies",
+          "label": "Primary Transaction Currencies",
+          "type": "multiselect",
+          "placeholder": "Select currencies",
+          "options": [
+            { "label": "USD – US Dollar", "value": "USD" },
+            { "label": "EUR – Euro", "value": "EUR" },
+            { "label": "GBP – British Pound", "value": "GBP" },
+            { "label": "JPY – Japanese Yen", "value": "JPY" },
+            { "label": "CNY – Chinese Yuan", "value": "CNY" },
+            { "label": "AED – UAE Dirham", "value": "AED" },
+            { "label": "CHF – Swiss Franc", "value": "CHF" },
+            { "label": "SGD – Singapore Dollar", "value": "SGD" },
+            { "label": "INR – Indian Rupee", "value": "INR" },
+            { "label": "HKD – Hong Kong Dollar", "value": "HKD" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "At least one currency is required" },
+            "minItems": { "value": 1, "message": "Select at least one currency" }
+          }
+        },
+        {
+          "name": "transactionTypes",
+          "label": "Expected Transaction Types",
+          "type": "multiselect",
+          "placeholder": "Select all applicable",
+          "options": [
+            { "label": "International Wire Transfers (SWIFT)", "value": "swift" },
+            { "label": "Domestic ACH / BACS Transfers", "value": "ach" },
+            { "label": "Trade Finance (LC, BG, etc.)", "value": "trade_finance" },
+            { "label": "Foreign Exchange (FX)", "value": "fx" },
+            { "label": "Cash Deposits / Withdrawals", "value": "cash" },
+            { "label": "Cheque / Demand Draft", "value": "cheque" },
+            { "label": "Electronic Funds Transfer (EFT)", "value": "eft" },
+            { "label": "Real-Time Gross Settlement (RTGS)", "value": "rtgs" }
+          ],
+          "validations": {
+            "required": { "value": true, "message": "At least one transaction type is required" },
+            "minItems": { "value": 1, "message": "Select at least one transaction type" }
+          }
+        },
+        {
+          "name": "purposeOfAccount",
+          "label": "Primary Purpose of Account",
+          "type": "select",
+          "placeholder": "Select purpose",
+          "options": [
+            { "label": "Operating / Current Account", "value": "operating" },
+            { "label": "Payroll Processing", "value": "payroll" },
+            { "label": "Trade Finance & Settlement", "value": "trade_finance" },
+            { "label": "FX Settlement", "value": "fx_settlement" },
+            { "label": "Investment & Treasury", "value": "investment" },
+            { "label": "Project Finance", "value": "project_finance" },
+            { "label": "Escrow / Trust", "value": "escrow" }
+          ],
+          "validations": { "required": { "value": true, "message": "Account purpose is required" } }
+        },
+        {
+          "name": "highRiskCountriesExposure",
+          "label": "Any exposure to FATF High-Risk or Monitored Countries?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "FATF country exposure declaration is required" } }
+        },
+        {
+          "name": "highRiskCountriesDetails",
+          "label": "FATF High-Risk Country Exposure Details",
+          "type": "textarea",
+          "placeholder": "Specify countries, nature and volume of exposure",
+          "fullWidth": true,
+          "visibleWhen": { "field": "highRiskCountriesExposure", "equals": "yes" },
+          "validations": {
+            "required": { "value": true, "message": "Details are required when high-risk country exposure exists" },
+            "minLength": { "value": 20, "message": "Minimum 20 characters required" }
+          }
+        },
+        {
+          "name": "cashIntensiveBusiness",
+          "label": "Is this a cash-intensive business?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "Cash intensity declaration is required" } }
+        }
+      ]
+    },
+    {
+      "title": "Existing Banking Relationships",
+      "columns": 1,
+      "fields": [
+        {
+          "name": "existingBankingRelationships",
+          "label": "Current Banking Relationships",
+          "type": "textarea",
+          "placeholder": "List bank names, account types, approximate balances and monthly volumes",
+          "validations": {
+            "required": { "value": true, "message": "Existing banking relationships must be disclosed" }
+          }
+        },
+        {
+          "name": "previousBankingIssues",
+          "label": "Any previous account closures, restrictions, or regulatory sanctions by a financial institution?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "This declaration is required" } }
+        },
+        {
+          "name": "previousBankingIssuesDetails",
+          "label": "Details of Previous Banking Issues / Sanctions",
+          "type": "textarea",
+          "placeholder": "Provide details including institution name, date, reason and resolution",
+          "visibleWhen": { "field": "previousBankingIssues", "equals": "yes" },
+          "validations": {
+            "required": { "value": true, "message": "Details are required" },
+            "minLength": { "value": 30, "message": "Please provide at least 30 characters" }
+          }
+        },
+        {
+          "name": "correspondentBankingRequired",
+          "label": "Is Correspondent Banking / Nostro Account required?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "This declaration is required" } }
+        },
+        {
+          "name": "additionalRfiNotes",
+          "label": "Additional Information / Disclosures",
+          "type": "textarea",
+          "placeholder": "Any other information relevant to the bank's assessment of this relationship"
+        }
+      ]
+    }
+  ],
+  "submitValidations": [
+    {
+      "type": "conditionalRequired",
+      "if": { "field": "highRiskCountriesExposure", "equals": "yes" },
+      "then": { "field": "highRiskCountriesDetails", "required": true },
+      "message": "FATF high-risk country exposure details are required"
+    },
+    {
+      "type": "conditionalRequired",
+      "if": { "field": "previousBankingIssues", "equals": "yes" },
+      "then": { "field": "previousBankingIssuesDetails", "required": true },
+      "message": "Details of previous banking issues are required"
+    }
+  ]
+}

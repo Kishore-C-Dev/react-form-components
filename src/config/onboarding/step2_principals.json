@@ -1,0 +1,251 @@
+{
+  "stepId": "principals",
+  "title": "Principal Officers",
+  "sections": [
+    {
+      "title": "Authorized Signatory / Director",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "signatoryName",
+          "label": "Full Legal Name",
+          "type": "text",
+          "placeholder": "As per passport / government-issued ID",
+          "validations": { "required": { "value": true, "message": "Full legal name is required" } }
+        },
+        {
+          "name": "signatoryDesignation",
+          "label": "Designation / Role",
+          "type": "select",
+          "placeholder": "Select designation",
+          "options": [
+            { "label": "Chief Executive Officer (CEO)", "value": "ceo" },
+            { "label": "Chief Financial Officer (CFO)", "value": "cfo" },
+            { "label": "Managing Director", "value": "md" },
+            { "label": "Director", "value": "director" },
+            { "label": "Authorized Signatory", "value": "auth_signatory" },
+            { "label": "Managing Partner", "value": "managing_partner" },
+            { "label": "Trustee", "value": "trustee" },
+            { "label": "Company Secretary", "value": "company_secretary" }
+          ],
+          "validations": { "required": { "value": true, "message": "Designation is required" } }
+        },
+        {
+          "name": "signatoryNationality",
+          "label": "Nationality",
+          "type": "select",
+          "placeholder": "Select nationality",
+          "options": [
+            { "label": "American", "value": "US" },
+            { "label": "British", "value": "GB" },
+            { "label": "German", "value": "DE" },
+            { "label": "French", "value": "FR" },
+            { "label": "Swiss", "value": "CH" },
+            { "label": "Singaporean", "value": "SG" },
+            { "label": "Emirati", "value": "AE" },
+            { "label": "Japanese", "value": "JP" },
+            { "label": "Indian", "value": "IN" },
+            { "label": "Chinese", "value": "CN" },
+            { "label": "Canadian", "value": "CA" },
+            { "label": "Australian", "value": "AU" },
+            { "label": "Other", "value": "other" }
+          ],
+          "validations": { "required": { "value": true, "message": "Nationality is required" } }
+        },
+        {
+          "name": "signatoryDob",
+          "label": "Date of Birth",
+          "type": "date",
+          "validations": { "required": { "value": true, "message": "Date of birth is required" } }
+        },
+        {
+          "name": "signatoryIdType",
+          "label": "ID Document Type",
+          "type": "select",
+          "placeholder": "Select ID type",
+          "options": [
+            { "label": "Passport", "value": "passport" },
+            { "label": "National Identity Card", "value": "national_id" },
+            { "label": "Driver's License", "value": "drivers_license" },
+            { "label": "Resident Permit", "value": "resident_permit" }
+          ],
+          "validations": { "required": { "value": true, "message": "ID document type is required" } }
+        },
+        {
+          "name": "signatoryIdNumber",
+          "label": "ID Document Number",
+          "type": "text",
+          "placeholder": "Document number",
+          "validations": { "required": { "value": true, "message": "ID document number is required" } }
+        },
+        {
+          "name": "signatoryIdExpiry",
+          "label": "ID Expiry Date",
+          "type": "date",
+          "hint": "Leave blank if document does not expire"
+        },
+        {
+          "name": "signatoryCountryOfResidence",
+          "label": "Country of Residence",
+          "type": "select",
+          "placeholder": "Select country",
+          "options": [
+            { "label": "United States", "value": "US" },
+            { "label": "United Kingdom", "value": "GB" },
+            { "label": "Germany", "value": "DE" },
+            { "label": "France", "value": "FR" },
+            { "label": "Switzerland", "value": "CH" },
+            { "label": "Singapore", "value": "SG" },
+            { "label": "United Arab Emirates", "value": "AE" },
+            { "label": "Japan", "value": "JP" },
+            { "label": "India", "value": "IN" },
+            { "label": "China", "value": "CN" },
+            { "label": "Canada", "value": "CA" },
+            { "label": "Australia", "value": "AU" }
+          ]
+        },
+        {
+          "name": "signatoryIsPep",
+          "label": "Is this person a Politically Exposed Person (PEP)?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "PEP status declaration is required" } }
+        },
+        {
+          "name": "signatoryPepDetails",
+          "label": "PEP Details",
+          "type": "textarea",
+          "placeholder": "Describe the political position, jurisdiction, and nature of the PEP relationship",
+          "hint": "Required when PEP status is Yes",
+          "fullWidth": true,
+          "visibleWhen": { "field": "signatoryIsPep", "equals": "yes" },
+          "validations": {
+            "required": { "value": true, "message": "PEP details are required" },
+            "minLength": { "value": 20, "message": "Minimum 20 characters required" }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Ultimate Beneficial Owner (UBO)",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "uboName",
+          "label": "UBO Full Legal Name",
+          "type": "text",
+          "placeholder": "As per passport / government-issued ID",
+          "hint": "Person(s) owning or controlling ≥ 25% of the entity",
+          "validations": { "required": { "value": true, "message": "UBO name is required" } }
+        },
+        {
+          "name": "uboNationality",
+          "label": "UBO Nationality",
+          "type": "select",
+          "placeholder": "Select nationality",
+          "options": [
+            { "label": "American", "value": "US" },
+            { "label": "British", "value": "GB" },
+            { "label": "German", "value": "DE" },
+            { "label": "French", "value": "FR" },
+            { "label": "Swiss", "value": "CH" },
+            { "label": "Singaporean", "value": "SG" },
+            { "label": "Emirati", "value": "AE" },
+            { "label": "Japanese", "value": "JP" },
+            { "label": "Indian", "value": "IN" },
+            { "label": "Chinese", "value": "CN" },
+            { "label": "Canadian", "value": "CA" },
+            { "label": "Australian", "value": "AU" },
+            { "label": "Other", "value": "other" }
+          ],
+          "validations": { "required": { "value": true, "message": "UBO nationality is required" } }
+        },
+        {
+          "name": "uboOwnershipPercent",
+          "label": "Ownership / Control Percentage (%)",
+          "type": "number",
+          "placeholder": "e.g. 51",
+          "hint": "Direct and/or indirect ownership percentage",
+          "validations": {
+            "required": { "value": true, "message": "Ownership percentage is required" },
+            "min": { "value": 0, "message": "Must be 0 or greater" },
+            "max": { "value": 100, "message": "Cannot exceed 100%" }
+          }
+        },
+        {
+          "name": "uboCountryOfResidence",
+          "label": "UBO Country of Residence",
+          "type": "select",
+          "placeholder": "Select country",
+          "options": [
+            { "label": "United States", "value": "US" },
+            { "label": "United Kingdom", "value": "GB" },
+            { "label": "Germany", "value": "DE" },
+            { "label": "France", "value": "FR" },
+            { "label": "Switzerland", "value": "CH" },
+            { "label": "Singapore", "value": "SG" },
+            { "label": "United Arab Emirates", "value": "AE" },
+            { "label": "Japan", "value": "JP" },
+            { "label": "India", "value": "IN" },
+            { "label": "China", "value": "CN" },
+            { "label": "Canada", "value": "CA" },
+            { "label": "Australia", "value": "AU" }
+          ]
+        },
+        {
+          "name": "uboIdType",
+          "label": "UBO ID Document Type",
+          "type": "select",
+          "placeholder": "Select ID type",
+          "options": [
+            { "label": "Passport", "value": "passport" },
+            { "label": "National Identity Card", "value": "national_id" },
+            { "label": "Driver's License", "value": "drivers_license" }
+          ],
+          "validations": { "required": { "value": true, "message": "UBO ID type is required" } }
+        },
+        {
+          "name": "uboIdNumber",
+          "label": "UBO ID Document Number",
+          "type": "text",
+          "placeholder": "Document number",
+          "validations": { "required": { "value": true, "message": "UBO ID number is required" } }
+        },
+        {
+          "name": "uboIsPep",
+          "label": "Is the UBO a Politically Exposed Person (PEP)?",
+          "type": "radio",
+          "options": [
+            { "label": "Yes", "value": "yes" },
+            { "label": "No", "value": "no" }
+          ],
+          "validations": { "required": { "value": true, "message": "UBO PEP status declaration is required" } }
+        },
+        {
+          "name": "uboRelationshipToEntity",
+          "label": "UBO Relationship to Entity",
+          "type": "select",
+          "placeholder": "Select relationship",
+          "options": [
+            { "label": "Shareholder / Equity Owner", "value": "shareholder" },
+            { "label": "Beneficial Owner via Holding Company", "value": "holding_company" },
+            { "label": "Trust Beneficiary", "value": "trust_beneficiary" },
+            { "label": "Senior Managing Official", "value": "managing_official" }
+          ],
+          "validations": { "required": { "value": true, "message": "UBO relationship is required" } }
+        }
+      ]
+    }
+  ],
+  "submitValidations": [
+    {
+      "type": "conditionalRequired",
+      "if": { "field": "signatoryIsPep", "equals": "yes" },
+      "then": { "field": "signatoryPepDetails", "required": true },
+      "message": "PEP details are required when signatory is a PEP"
+    }
+  ]
+}

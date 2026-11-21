@@ -30,21 +30,20 @@ const statusVariant: Record<User['status'], 'success' | 'danger' | 'warning'> = 
 };
 
 const columns: TableColumn<User>[] = [
-  { key: 'id', header: '#', width: '50px', sortable: true },
-  { key: 'name', header: 'Name', sortable: true },
-  { key: 'email', header: 'Email', sortable: true },
-  { key: 'role', header: 'Role', sortable: true },
+  { key: 'id', header: '#', width: '50px' },
+  { key: 'name', header: 'Name' },
+  { key: 'email', header: 'Email' },
+  { key: 'role', header: 'Role' },
   {
     key: 'status',
     header: 'Status',
-    sortable: true,
     render: (value) => (
       <Badge variant={statusVariant[value as User['status']]} dot>
         {String(value)}
       </Badge>
     ),
   },
-  { key: 'joined', header: 'Joined', sortable: true },
+  { key: 'joined', header: 'Joined' },
 ];
 
 export function TableDemo() {
@@ -78,6 +77,7 @@ export function TableDemo() {
         keyField="id"
         striped
         searchable
+        defaultSortable
         pageSize={5}
         emptyState={<span>No users found. All may have been deleted.</span>}
       />

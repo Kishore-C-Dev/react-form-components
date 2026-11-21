@@ -1,0 +1,29 @@
+{
+  "steps": [
+    {
+      "id": "client-profile",
+      "title": "Client Profile",
+      "description": "Legal entity & contact details"
+    },
+    {
+      "id": "principals",
+      "title": "Principal Officers",
+      "description": "Directors, signatories & UBOs"
+    },
+    {
+      "id": "rfi",
+      "title": "RFI",
+      "description": "Request for Information"
+    },
+    {
+      "id": "kyc",
+      "title": "KYC Assessment",
+      "description": "Know Your Customer"
+    },
+    {
+      "id": "review",
+      "title": "Review & Submit",
+      "description": "Confirm and submit"
+    }
+  ]
+}

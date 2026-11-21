@@ -10,3 +10,4 @@ export { FileInput } from './FileInput';
 export { RangeSlider } from './RangeSlider';
 export { FormSection } from './FormSection';
 export { FormActions } from './FormActions';
+export { MultiSelect } from './MultiSelect';

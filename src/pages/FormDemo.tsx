@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { z } from 'zod';
+import { Controller } from 'react-hook-form';
 import { useFormWithZod } from '@/hooks/useFormWithZod';
 import {
   TextInput,
@@ -13,6 +14,7 @@ import {
   RangeSlider,
   FormSection,
   FormActions,
+  MultiSelect,
 } from '@/components/form';
 import { Button, Badge } from '@/components/ui';
 
@@ -27,6 +29,7 @@ const schema = z.object({
   country: z.string().min(1, 'Please select a country'),
   gender: z.string().min(1, 'Please select a gender'),
   interests: z.array(z.string()).min(1, 'Select at least one interest'),
+  skills: z.array(z.string()).min(1, 'Select at least one skill'),
   newsletter: z.boolean().optional(),
   notifications: z.boolean().optional(),
   experience: z.string().optional(),
@@ -56,6 +59,17 @@ const interestOptions = [
   { label: 'Science', value: 'science' },
 ];
 
+const skillOptions = [
+  { label: 'TypeScript', value: 'ts' },
+  { label: 'React', value: 'react' },
+  { label: 'Node.js', value: 'node' },
+  { label: 'Python', value: 'python' },
+  { label: 'GraphQL', value: 'graphql' },
+  { label: 'PostgreSQL', value: 'postgres' },
+  { label: 'Docker', value: 'docker' },
+  { label: 'Kubernetes', value: 'k8s' },
+];
+
 const experienceOptions = [
   { label: '0 – 1 year', value: '0-1', hint: 'Entry level' },
   { label: '2 – 5 years', value: '2-5', hint: 'Mid level' },
@@ -69,12 +83,13 @@ export function FormDemo() {
 
   const {
     register,
+    control,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
   } = useFormWithZod<FormData>({
     schema,
-    defaultValues: { interests: [], newsletter: false, notifications: true },
+    defaultValues: { interests: [], skills: [], newsletter: false, notifications: true },
   });
 
   const bio = watch('bio') ?? '';
@@ -186,6 +201,26 @@ export function FormDemo() {
             registration={register('interests')}
             error={errors.interests?.message}
             orientation="horizontal"
+          />
+        </FormSection>
+
+        <FormSection title="Skills">
+          <Controller
+            name="skills"
+            control={control}
+            render={({ field }) => (
+              <MultiSelect
+                label="Technical Skills"
+                required
+                options={skillOptions}
+                value={field.value as string[]}
+                onChange={field.onChange}
+                placeholder="Pick your skills…"
+                searchable
+                error={errors.skills?.message}
+                hint="Search and select all that apply"
+              />
+            )}
           />
         </FormSection>
 

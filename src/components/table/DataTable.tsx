@@ -17,6 +17,7 @@ interface DataTableProps<T extends Record<string, unknown>> {
   searchable?: boolean;
   searchPlaceholder?: string;
   pageSize?: number;
+  defaultSortable?: boolean;
   className?: string;
 }
 
@@ -56,6 +57,7 @@ export function DataTable<T extends Record<string, unknown>>({
   searchable = false,
   searchPlaceholder = 'Search…',
   pageSize,
+  defaultSortable = false,
   className,
 }: DataTableProps<T>) {
   const [sort, setSort] = useState<SortState>({ key: '', direction: null });
@@ -138,9 +140,9 @@ export function DataTable<T extends Record<string, unknown>>({
                   className={cn(
                     cellPadding,
                     'text-left text-xs font-semibold uppercase tracking-wide text-gray-500',
-                    col.sortable && 'cursor-pointer select-none hover:text-gray-700',
+                    (col.sortable ?? defaultSortable) && 'cursor-pointer select-none hover:text-gray-700',
                   )}
-                  onClick={col.sortable ? () => handleSort(String(col.key)) : undefined}
+                  onClick={(col.sortable ?? defaultSortable) ? () => handleSort(String(col.key)) : undefined}
                   aria-sort={
                     sort.key === String(col.key) && sort.direction
                       ? sort.direction === 'asc'
@@ -151,7 +153,7 @@ export function DataTable<T extends Record<string, unknown>>({
                 >
                   <span className="inline-flex items-center">
                     {col.header}
-                    {col.sortable && (
+                    {(col.sortable ?? defaultSortable) && (
                       <SortIcon
                         direction={sort.key === String(col.key) ? sort.direction : null}
                       />
