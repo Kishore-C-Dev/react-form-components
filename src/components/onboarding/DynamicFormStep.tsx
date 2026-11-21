@@ -57,6 +57,9 @@ export function DynamicFormStep({
                     value={formData[field.name]}
                     error={touched[field.name] ? errors[field.name] : undefined}
                     onChange={onChange}
+                    dependsOnValue={
+                      field.dependsOn ? String(formData[field.dependsOn] ?? '') : undefined
+                    }
                   />
                 </div>
               ))}

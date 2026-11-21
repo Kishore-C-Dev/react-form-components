@@ -187,8 +187,10 @@
         {
           "name": "regState",
           "label": "State / Province",
-          "type": "text",
-          "placeholder": "State or Province"
+          "type": "select",
+          "placeholder": "Select state / province\u2026",
+          "dataSource": "/api/ref/states",
+          "dependsOn": "regCountry"
         },
         {
           "name": "regPostalCode",

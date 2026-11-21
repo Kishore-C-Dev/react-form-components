@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { TextInput } from '@/components/form/TextInput';
 import { TextArea } from '@/components/form/TextArea';
 import { Select } from '@/components/form/Select';
@@ -12,15 +13,29 @@ interface DynamicFieldProps {
   value: unknown;
   error?: string;
   onChange: (name: string, value: unknown) => void;
+  dependsOnValue?: string;
 }
 
-export function DynamicField({ field, value, error, onChange }: DynamicFieldProps) {
+export function DynamicField({ field, value, error, onChange, dependsOnValue }: DynamicFieldProps) {
   const required = field.validations?.required?.value === true;
   const strVal = (value as string) ?? '';
   const arrVal = (value as string[]) ?? [];
 
-  const { options, loading: optsLoading } = useFieldOptions(field.dataSource, field.options);
+  const { options, loading: optsLoading } = useFieldOptions(
+    field.dataSource,
+    field.options,
+    field.dependsOn ? dependsOnValue : undefined,
+  );
   const resolvedOptions = options;
+
+  /* Reset this field's value when the parent dependency changes */
+  const prevParent = useRef(dependsOnValue);
+  useEffect(() => {
+    if (field.dependsOn && prevParent.current !== dependsOnValue) {
+      prevParent.current = dependsOnValue;
+      if (value) onChange(field.name, Array.isArray(value) ? [] : '');
+    }
+  }, [dependsOnValue]);
 
   switch (field.type) {
     case 'text':
@@ -44,20 +59,26 @@ export function DynamicField({ field, value, error, onChange }: DynamicFieldProp
         />
       );
 
-    case 'select':
+    case 'select': {
+      const waitingForParent = !!field.dependsOn && !dependsOnValue;
       return (
         <Select
           id={field.name}
           label={field.label}
           required={required}
           options={resolvedOptions}
-          placeholder={optsLoading ? 'Loading…' : (field.placeholder ?? 'Select…')}
+          placeholder={
+            waitingForParent ? 'Select a value above first…'
+            : optsLoading    ? 'Loading…'
+            :                  (field.placeholder ?? 'Select…')
+          }
           error={error}
-          disabled={field.disabled || optsLoading}
+          disabled={field.disabled || optsLoading || waitingForParent}
           value={strVal}
           onChange={(e) => onChange(field.name, e.target.value)}
         />
       );
+    }
 
     case 'multiselect':
       return (

@@ -36,6 +36,7 @@ export interface FieldConfig {
   hint?: string;
   options?: FieldOption[];
   dataSource?: string;          // API endpoint → { label, value }[]
+  dependsOn?: string;           // field name whose value is appended to dataSource
   defaultSelected?: string | string[]; // pre-select value(s) from dataSource
   defaultValue?: string | boolean | string[];
   validations?: FieldValidations;
