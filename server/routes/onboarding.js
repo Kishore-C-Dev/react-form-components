@@ -125,25 +125,17 @@ router.put('/:id/steps/:stepId', async (req, res) => {
       case 'principals':
         await client.query(`
           INSERT INTO principal_officers
-            (case_id, signatory_name, signatory_designation, signatory_nationality,
-             signatory_dob, signatory_id_type, signatory_id_number, signatory_id_expiry,
-             signatory_country_of_residence, signatory_is_pep, signatory_pep_details,
+            (case_id, signatories,
              ubo_name, ubo_nationality, ubo_ownership_percent, ubo_country_of_residence,
              ubo_id_type, ubo_id_number, ubo_is_pep, ubo_relationship_to_entity)
-          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)
+          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
           ON CONFLICT (case_id) DO UPDATE SET
-            signatory_name=$2, signatory_designation=$3, signatory_nationality=$4,
-            signatory_dob=$5, signatory_id_type=$6, signatory_id_number=$7,
-            signatory_id_expiry=$8, signatory_country_of_residence=$9,
-            signatory_is_pep=$10, signatory_pep_details=$11,
-            ubo_name=$12, ubo_nationality=$13, ubo_ownership_percent=$14,
-            ubo_country_of_residence=$15, ubo_id_type=$16, ubo_id_number=$17,
-            ubo_is_pep=$18, ubo_relationship_to_entity=$19
+            signatories=$2,
+            ubo_name=$3, ubo_nationality=$4, ubo_ownership_percent=$5,
+            ubo_country_of_residence=$6, ubo_id_type=$7, ubo_id_number=$8,
+            ubo_is_pep=$9, ubo_relationship_to_entity=$10
         `, [id,
-          b.signatoryName||null, b.signatoryDesignation||null, b.signatoryNationality||null,
-          b.signatoryDob||null, b.signatoryIdType||null, b.signatoryIdNumber||null,
-          b.signatoryIdExpiry||null, b.signatoryCountryOfResidence||null,
-          b.signatoryIsPep||null, b.signatoryPepDetails||null,
+          JSON.stringify(b.signatories ?? []),
           b.uboName||null, b.uboNationality||null,
           b.uboOwnershipPercent ? parseFloat(b.uboOwnershipPercent) : null,
           b.uboCountryOfResidence||null, b.uboIdType||null, b.uboIdNumber||null,

@@ -1,7 +1,8 @@
 export type FieldType =
   | 'text' | 'email' | 'tel' | 'url' | 'number' | 'date'
   | 'select' | 'multiselect' | 'textarea'
-  | 'radio' | 'checkbox';
+  | 'radio' | 'checkbox'
+  | 'repeatable-group';
 
 export interface ValidationRule {
   value: boolean | number | string;
@@ -28,6 +29,11 @@ export interface FieldOption {
   value: string;
 }
 
+export interface RepeatableGroupColumn {
+  label: string;
+  field: string; // key within each group record
+}
+
 export interface FieldConfig {
   name: string;
   label: string;
@@ -43,6 +49,9 @@ export interface FieldConfig {
   disabled?: boolean;
   visibleWhen?: VisibleWhen;
   fullWidth?: boolean;
+  maxRecords?: number;
+  tableColumns?: RepeatableGroupColumn[];
+  groupFields?: FieldConfig[];
 }
 
 export interface SectionConfig {

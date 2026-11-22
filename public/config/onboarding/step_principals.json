@@ -3,142 +3,178 @@
   "title": "Principal Officers",
   "sections": [
     {
-      "title": "Authorized Signatory / Director",
-      "columns": 2,
+      "title": "Authorized Signatories / Directors",
+      "columns": 1,
       "fields": [
         {
-          "name": "signatoryName",
-          "label": "Full Legal Name",
-          "type": "text",
-          "placeholder": "As per passport / government-issued ID"
-        },
-        {
-          "name": "signatoryDesignation",
-          "label": "Designation / Role",
-          "type": "select",
-          "placeholder": "Select designation",
-          "options": [
-            {
-              "label": "Chief Executive Officer (CEO)",
-              "value": "ceo"
-            },
-            {
-              "label": "Chief Financial Officer (CFO)",
-              "value": "cfo"
-            },
-            {
-              "label": "Managing Director",
-              "value": "md"
-            },
-            {
-              "label": "Director",
-              "value": "director"
-            },
-            {
-              "label": "Authorized Signatory",
-              "value": "auth_signatory"
-            },
-            {
-              "label": "Managing Partner",
-              "value": "managing_partner"
-            },
-            {
-              "label": "Trustee",
-              "value": "trustee"
-            },
-            {
-              "label": "Company Secretary",
-              "value": "company_secretary"
-            }
-          ]
-        },
-        {
-          "name": "signatoryNationality",
-          "label": "Nationality",
-          "type": "select",
-          "placeholder": "Select nationality\u2026",
-          "dataSource": "/api/ref/nationalities"
-        },
-        {
-          "name": "signatoryDob",
-          "label": "Date of Birth",
-          "type": "date"
-        },
-        {
-          "name": "signatoryIdType",
-          "label": "ID Document Type",
-          "type": "select",
-          "placeholder": "Select ID type",
-          "options": [
-            {
-              "label": "Passport",
-              "value": "passport"
-            },
-            {
-              "label": "National Identity Card",
-              "value": "national_id"
-            },
-            {
-              "label": "Driver's License",
-              "value": "drivers_license"
-            },
-            {
-              "label": "Resident Permit",
-              "value": "resident_permit"
-            }
-          ]
-        },
-        {
-          "name": "signatoryIdNumber",
-          "label": "ID Document Number",
-          "type": "text",
-          "placeholder": "Document number"
-        },
-        {
-          "name": "signatoryIdExpiry",
-          "label": "ID Expiry Date",
-          "type": "date",
-          "hint": "Leave blank if document does not expire"
-        },
-        {
-          "name": "signatoryCountryOfResidence",
-          "label": "Country of Residence",
-          "type": "select",
-          "placeholder": "Select country\u2026",
-          "dataSource": "/api/ref/countries"
-        },
-        {
-          "name": "signatoryIsPep",
-          "label": "Is this person a Politically Exposed Person (PEP)?",
-          "type": "radio",
-          "options": [
-            {
-              "label": "Yes",
-              "value": "yes"
-            },
-            {
-              "label": "No",
-              "value": "no"
-            }
-          ]
-        },
-        {
-          "name": "signatoryPepDetails",
-          "label": "PEP Details",
-          "type": "textarea",
-          "placeholder": "Describe the political position, jurisdiction, and nature of the PEP relationship",
-          "hint": "Provide details when PEP status is Yes",
+          "name": "signatories",
+          "label": "Authorized Signatories / Directors",
+          "type": "repeatable-group",
           "fullWidth": true,
-          "visibleWhen": {
-            "field": "signatoryIsPep",
-            "equals": "yes"
-          },
-          "validations": {
-            "minLength": {
-              "value": 20,
-              "message": "Minimum 20 characters required"
+          "maxRecords": 3,
+          "tableColumns": [
+            {
+              "label": "Full Name",
+              "field": "name"
+            },
+            {
+              "label": "Designation",
+              "field": "designation"
+            },
+            {
+              "label": "Nationality",
+              "field": "nationality"
+            },
+            {
+              "label": "ID Type",
+              "field": "idType"
+            },
+            {
+              "label": "PEP",
+              "field": "isPep"
             }
-          }
+          ],
+          "groupFields": [
+            {
+              "name": "name",
+              "label": "Full Name",
+              "type": "text",
+              "placeholder": "Legal full name as on ID document",
+              "fullWidth": true,
+              "validations": {
+                "required": {
+                  "value": true,
+                  "message": "Full name is required"
+                }
+              }
+            },
+            {
+              "name": "designation",
+              "label": "Designation / Title",
+              "type": "select",
+              "placeholder": "Select designation",
+              "options": [
+                {
+                  "label": "Chief Executive Officer (CEO)",
+                  "value": "ceo"
+                },
+                {
+                  "label": "Chief Financial Officer (CFO)",
+                  "value": "cfo"
+                },
+                {
+                  "label": "Managing Director",
+                  "value": "md"
+                },
+                {
+                  "label": "Director",
+                  "value": "director"
+                },
+                {
+                  "label": "Authorized Signatory",
+                  "value": "auth_signatory"
+                },
+                {
+                  "label": "Managing Partner",
+                  "value": "managing_partner"
+                },
+                {
+                  "label": "Trustee",
+                  "value": "trustee"
+                },
+                {
+                  "label": "Company Secretary",
+                  "value": "company_secretary"
+                }
+              ]
+            },
+            {
+              "name": "nationality",
+              "label": "Nationality",
+              "type": "select",
+              "dataSource": "/api/ref/nationalities",
+              "placeholder": "Select nationality\u2026"
+            },
+            {
+              "name": "dob",
+              "label": "Date of Birth",
+              "type": "date"
+            },
+            {
+              "name": "idType",
+              "label": "ID Document Type",
+              "type": "select",
+              "placeholder": "Select ID type",
+              "options": [
+                {
+                  "label": "Passport",
+                  "value": "passport"
+                },
+                {
+                  "label": "National Identity Card",
+                  "value": "national_id"
+                },
+                {
+                  "label": "Driver's License",
+                  "value": "drivers_license"
+                },
+                {
+                  "label": "Resident Permit",
+                  "value": "resident_permit"
+                }
+              ]
+            },
+            {
+              "name": "idNumber",
+              "label": "ID / Passport Number",
+              "type": "text",
+              "placeholder": "e.g. AB1234567",
+              "validations": {
+                "required": {
+                  "value": true,
+                  "message": "ID number is required"
+                }
+              }
+            },
+            {
+              "name": "idExpiry",
+              "label": "ID Expiry Date",
+              "type": "date"
+            },
+            {
+              "name": "countryOfResidence",
+              "label": "Country of Residence",
+              "type": "select",
+              "dataSource": "/api/ref/countries",
+              "placeholder": "Select country\u2026"
+            },
+            {
+              "name": "isPep",
+              "label": "Politically Exposed Person (PEP)?",
+              "type": "radio",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "label": "No",
+                  "value": "no"
+                }
+              ]
+            },
+            {
+              "name": "pepDetails",
+              "label": "PEP Details",
+              "type": "textarea",
+              "placeholder": "Describe political position and jurisdiction",
+              "fullWidth": true,
+              "visibleWhen": {
+                "field": "isPep",
+                "equals": "yes"
+              }
+            }
+          ]
         }
       ]
     },

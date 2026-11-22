@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { RepeatableGroupWidget } from './RepeatableGroupWidget';
 import { TextInput } from '@/components/form/TextInput';
 import { TextArea } from '@/components/form/TextArea';
 import { Select } from '@/components/form/Select';
@@ -160,6 +161,16 @@ export function DynamicField({ field, value, error, onChange, dependsOnValue }: 
             </span>
           </label>
         </FieldWrapper>
+      );
+
+    case 'repeatable-group':
+      return (
+        <RepeatableGroupWidget
+          field={field}
+          value={value}
+          error={error}
+          onChange={onChange}
+        />
       );
 
     default:

@@ -52,16 +52,7 @@ function flattenTaskData(data: TaskDetails): Record<string, unknown> {
 
   const o = data.principals;
   if (o) Object.assign(f, {
-    signatoryName: o.signatory_name ?? '',
-    signatoryDesignation: o.signatory_designation ?? '',
-    signatoryNationality: o.signatory_nationality ?? '',
-    signatoryDob: o.signatory_dob ? String(o.signatory_dob).split('T')[0] : '',
-    signatoryIdType: o.signatory_id_type ?? '',
-    signatoryIdNumber: o.signatory_id_number ?? '',
-    signatoryIdExpiry: o.signatory_id_expiry ? String(o.signatory_id_expiry).split('T')[0] : '',
-    signatoryCountryOfResidence: o.signatory_country_of_residence ?? '',
-    signatoryIsPep: o.signatory_is_pep ?? '',
-    signatoryPepDetails: o.signatory_pep_details ?? '',
+    signatories: o.signatories ?? [],
     uboName: o.ubo_name ?? '',
     uboNationality: o.ubo_nationality ?? '',
     uboOwnershipPercent: o.ubo_ownership_percent != null ? String(o.ubo_ownership_percent) : '',
