@@ -34,6 +34,11 @@ export interface RepeatableGroupColumn {
   field: string; // key within each group record
 }
 
+export interface RepeatableGroupModalStep {
+  title: string;
+  fields: string[]; // names from groupFields to show on this step
+}
+
 export interface FieldConfig {
   name: string;
   label: string;
@@ -52,6 +57,7 @@ export interface FieldConfig {
   maxRecords?: number;
   tableColumns?: RepeatableGroupColumn[];
   groupFields?: FieldConfig[];
+  modalSteps?: RepeatableGroupModalStep[];
 }
 
 export interface SectionConfig {

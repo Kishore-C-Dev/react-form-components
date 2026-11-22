@@ -48,9 +48,12 @@ export function useFieldOptions(
 
   useEffect(() => {
     if (!effectiveUrl) {
-      // Parent not yet chosen — clear options and show nothing
-      setOptions([]);
-      setLoading(false);
+      if (dataSource) {
+        // Has a dataSource but parent dependency not yet chosen — clear and wait
+        setOptions([]);
+        setLoading(false);
+      }
+      // No dataSource means static options — leave them untouched
       return;
     }
     if (cache.has(effectiveUrl)) {
